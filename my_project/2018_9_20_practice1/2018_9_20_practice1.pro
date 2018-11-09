@@ -27,15 +27,26 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         buttonwidget.cpp \
-    block.cpp
+    block.cpp \
+    gamewidget.cpp \
+    blockgroup.cpp \
+    tank.cpp \
+    mytank.cpp \
+    enemytank.cpp
 
 HEADERS += \
         mainwindow.h \
         buttonwidget.h \
-    block.h
+    block.h \
+    gamewidget.h \
+    blockgroup.h \
+    tank.h \
+    mytank.h \
+    enemytank.h
 
 FORMS += \
         mainwindow.ui \
-    buttonwidget.ui
+    buttonwidget.ui \
+    gamewidget.ui
 
 DISTFILES +=

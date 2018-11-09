@@ -8,11 +8,13 @@ buttonwidget::buttonwidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    m_start = false;
+
     //place the buttonwidget into mainwidget
     setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
     hide();
 
-    //button clicked event
+    //button clicked event and widget initialize
     initialize();
 
 }
@@ -24,12 +26,15 @@ buttonwidget::~buttonwidget()
 
 void buttonwidget::initialize()
 {
+    //set the size and position
+    setGeometry(1100, 700, 200, 200);
     connect(ui->startbutton, &QPushButton::clicked, this, &buttonwidget::startGame);
     connect(ui->quitbutton, &QPushButton::clicked, this, &buttonwidget::quitGame);
 }
 
 void buttonwidget::startGame()
 {
+    m_start = true;
     this->close();
     emit startSignal();
 }

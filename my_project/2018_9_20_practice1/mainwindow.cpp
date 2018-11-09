@@ -1,12 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "block.h"
 #include <QPalette>
 #include <QPixmap>
 #include <QBrush>
 #include <QDebug>
 #include <QPainter>
-
 
 using namespace std;
 
@@ -15,13 +13,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setFixedSize(1200,750);
+    setFixedSize(1300,900);
     startPage();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete m_buttonwidget;
+    delete m_gamewidget;
 }
 
 void MainWindow::startPage()
@@ -30,7 +30,6 @@ void MainWindow::startPage()
     setBackground("background.jpeg");
 
     m_buttonwidget = new buttonwidget(this);
-    m_buttonwidget->move(1000, 600);
     m_buttonwidget->show();
 
     connectSignal();
@@ -38,7 +37,7 @@ void MainWindow::startPage()
 
 void MainWindow::setBackground(const string &image)
 {
-    m_background = string("/home/fus/my_project/tankgame_image/") + image;
+    m_background = string("/home/ley/my_project/my_project/tankgame_image/") + image;
 
     //cover all the background
     setAutoFillBackground(true);
@@ -58,7 +57,9 @@ void MainWindow::connectSignal()
 
 void MainWindow::startGame()
 {
-    setBackground("graybackground.jpeg");
+    m_buttonwidget->hide();
+    m_gamewidget = new gamewidget(this);
+    m_gamewidget->show();
 }
 
 void MainWindow::quitGame()
@@ -66,9 +67,3 @@ void MainWindow::quitGame()
     this->close();
 }
 
-void MainWindow::paintEvent(QPaintEvent*)
-{
-    QPainter *painter = new QPainter(this);
-    Block wall(100, 100, 100, 100, "wall");
-    wall.paint(painter);
-}

@@ -16,7 +16,7 @@ Block::Block(int x, int y, int height, int width, const string &image, bool hit)
     m_width(width),
     m_hit(hit)
 {
-    m_type = string("/home/fus/my_project/tankgame_image/") + image;
+    m_type = string("/home/ley/my_project/my_project/tankgame_image/") + image;
     m_pix.load(m_type.c_str());
 }
 
@@ -26,5 +26,5 @@ Block::~Block()
 
 void Block::paint(QPainter *painter)
 {
-    painter->drawPixmap(m_x, m_y, m_height, m_width, m_pix);
+    painter->drawPixmap(m_x, m_y, m_width, m_height, m_pix);
 }
